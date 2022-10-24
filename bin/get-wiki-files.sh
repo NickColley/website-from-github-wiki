@@ -3,8 +3,7 @@ if [ $CI ]; then
     # If the output directory does not exist setup a placeholder.
     if ! [ -d $outputDirectory ]; then
         echo "No source files, so create a placeholder..."
-        placeholder="# Welcome to your new wiki powered website...
-        \n[Create your first wiki page](https://github.com/$GITHUB_REPOSITORY/wiki)"
+        placeholder="[Create your first wiki page](https://github.com/$GITHUB_REPOSITORY/wiki)"
         mkdir $outputDirectory
         echo $placeholder > "$outputDirectory/Home.md"
     fi
