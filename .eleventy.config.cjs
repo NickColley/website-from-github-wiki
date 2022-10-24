@@ -1,7 +1,7 @@
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 const {
   DefaultFrontmatterPlugin,
-  HtmlTransformsPlugin,
+  MarkdownRemarkPlugin,
 } = require("./lib/plugins/index.cjs");
 
 const {
@@ -11,7 +11,6 @@ const {
   textLength,
   print,
 } = require("./lib/filters.cjs");
-const { relativeLinks } = require("./lib/transforms.cjs");
 
 const constants = require("./lib/constants.cjs");
 const { BASE_HREF, GITHUB_REPOSITORY_NAME } = constants;
@@ -22,9 +21,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin, {
     baseHref: BASE_HREF,
   });
-  eleventyConfig.addPlugin(HtmlTransformsPlugin, {
-    transforms: [relativeLinks],
-  });
+  eleventyConfig.addPlugin(MarkdownRemarkPlugin);
   eleventyConfig.addPlugin(DefaultFrontmatterPlugin, {
     all: {
       constants,
