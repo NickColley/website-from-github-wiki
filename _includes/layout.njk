@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>{{ page.fileSlug | slugToTitle }} – {{ siteTitle }}</title>
+	<title>{{ page.fileSlug | slugToTitle }} – {{ siteTitle | slugToTitle }}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 	<link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
 	<link rel="stylesheet" href="/assets/styles.css">
@@ -12,8 +12,11 @@
 	<a class="skip-link visually-hidden-focusable" href="#content">Skip to content</a>
 	<header class="header">
 		<div class="container">
-			<a class="header-link" href="/" aria-label="Home">
-				<span class="header-title">{{ siteTitle }}</span>
+			<a class="header-link" href="/">
+				<span class="header-title">
+                    {{ siteTitle | slugToTitle }}
+                    <span class="visually-hidden">home</span>
+                </span>
 			</a>
 		</div>
 	</header>

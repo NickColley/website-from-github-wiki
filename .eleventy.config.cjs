@@ -25,8 +25,8 @@ module.exports = function (eleventyConfig) {
       constants,
       layout: "page.njk",
       siteTitle: GITHUB_REPOSITORY_NAME
-        ? slugToTitle(GITHUB_REPOSITORY_NAME)
-        : "Website from GitHub Wiki",
+        ? GITHUB_REPOSITORY_NAME
+        : "website-from-github-wiki",
     },
     "Home.md": {
       permalink: "/",
@@ -39,7 +39,6 @@ module.exports = function (eleventyConfig) {
   });
 
   // Filters
-  eleventyConfig.addFilter("capitalize", slugToTitle);
   eleventyConfig.addFilter("filterBy", filterBy);
   eleventyConfig.addFilter("slugToTitle", slugToTitle);
   eleventyConfig.addFilter("textLength", textLength);
@@ -56,4 +55,4 @@ module.exports = function (eleventyConfig) {
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
   };
-};
+};;;;

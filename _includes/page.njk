@@ -1,17 +1,12 @@
 {% extends "layout.njk" %}
 
-{% set title = page.fileSlug | slugToTitle %}
-{% set parent = collections.all | filterBy('fileSlug', parentPage) %}
-
 {% block beforeContent %}
-    {%- if parent -%}
-        <a class="back-link" href='/{{ parent.fileSlug }}'>Back to {{ parent.data.label or parent.fileSlug | slugToTitle }}</a>
-    {%- elseif permalink !== "/" -%}
+    {%- if permalink !== "/" -%}
         <a class="back-link" href='/'>Back</a>
     {%- endif -%}
 {% endblock %}
 
 {% block content %}
-    <h1>{{ title }}</h1>
+    <h1>{{ page.fileSlug | slugToTitle }}</h1>
     {{- super() -}}
 {% endblock %}
