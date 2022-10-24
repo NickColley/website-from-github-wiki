@@ -10,7 +10,7 @@ const {
   print,
 } = require("./lib/filters.cjs");
 const constants = require("./lib/constants.cjs");
-const { BASE_HREF } = constants;
+const { BASE_HREF, GITHUB_REPOSITORY_NAME } = constants;
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("assets");
@@ -24,7 +24,9 @@ module.exports = function (eleventyConfig) {
     all: {
       constants,
       layout: "page.njk",
-      siteTitle: "Website from GitHub Wiki",
+      siteTitle: GITHUB_REPOSITORY_NAME
+        ? slugToTitle(GITHUB_REPOSITORY_NAME)
+        : "Website from GitHub Wiki",
     },
     "Home.md": {
       permalink: "/",
