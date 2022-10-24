@@ -31,7 +31,8 @@ async function getGitHubWiki(cloneDirectory) {
     );
     const remoteUrl = await exec(`git remote get-url ${remoteName}`);
     const { dir, ext, name } = parse(remoteUrl);
-    const wikiRepositoryUrl = `${dir}/${name}.wiki${ext}`;
+    const extension = ext ? ext : ".git";
+    const wikiRepositoryUrl = `${dir}/${name}.wiki${extension}`;
     await exec(`git clone ${wikiRepositoryUrl} ${cloneDirectory}`);
   }
 }
