@@ -33,14 +33,19 @@
 	</div>
 	<footer class="footer">
 		<div class="container">
-			{%- set wikiPageBaseURL = "https://github.com/" + constants.GITHUB_REPOSITORY + "/wiki/" + page.fileSlug -%}
-			<ul class="footer-inline-links">
-				<li>
-					<a href="{{ wikiPageBaseURL }}/_edit">
-						Edit this page
-					</a>
-				</li>
-			</ul>
+            <div class="footer-inline-links">
+                {% renderFileIfExists "_wiki/_Footer.md" %}
+			</div>
+            <div class="footer-inline-links">
+                {%- set wikiPageBaseURL = "https://github.com/" + constants.GITHUB_REPOSITORY + "/wiki/" + page.fileSlug -%}
+                <ul>
+                    <li>
+                        <a href="{{ wikiPageBaseURL }}/_edit">
+                            Edit this page
+                        </a>
+                    </li>
+                </ul>
+			</div>
 		</div>
 	</footer>
     <script src="/assets/scripts.js"></script>

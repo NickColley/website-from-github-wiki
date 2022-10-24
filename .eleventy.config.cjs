@@ -1,4 +1,7 @@
-const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
+const {
+  EleventyHtmlBasePlugin,
+  EleventyRenderPlugin,
+} = require("@11ty/eleventy");
 
 const {
   DefaultFrontmatterPlugin,
@@ -13,12 +16,15 @@ const {
   print,
 } = require("./lib/filters.cjs");
 
+const { renderFileIfExists } = require("./lib/shortcodes.cjs");
+
 const constants = require("./lib/constants.cjs");
 const { BASE_HREF, GITHUB_REPOSITORY_NAME } = constants;
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("assets");
 
+  eleventyConfig.addPlugin(EleventyRenderPlugin);
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin, {
     baseHref: BASE_HREF,
   });
@@ -48,6 +54,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("filterBy", filterBy);
   eleventyConfig.addFilter("textLength", textLength);
   eleventyConfig.addFilter("print", print);
+
+  // Shortcodes
+  eleventyConfig.addAsyncShortcode(
+    "renderFileIfExists",
+    renderFileIfExists(eleventyConfig)
+  );
 
   // Ensure our untracked _wiki input can be used as an input.
   eleventyConfig.setUseGitIgnore(false);

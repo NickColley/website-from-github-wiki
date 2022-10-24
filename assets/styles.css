@@ -374,7 +374,11 @@ hr {
 .footer :focus {
   --outline-color: currentColor;
 }
-.footer-inline-links {
+
+.footer-inline-links:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+.footer-inline-links ul {
   list-style: none;
   padding: 0;
 }
@@ -382,7 +386,7 @@ hr {
   margin-bottom: 1rem;
 }
 @media (min-width: 60rem) {
-  .footer-inline-links {
+  .footer-inline-links ul {
     --footer-inline-links-gap: 0.8rem;
     display: inline-flex;
     margin: 0;
