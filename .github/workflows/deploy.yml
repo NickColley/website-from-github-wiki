@@ -26,7 +26,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Checkout wiki repository
-        if: git ls-remote --exit-code https://github.com/NickCoslley/website-from-github-wiki.wiki.git &> /dev/null
+        if: ${{ git ls-remote --exit-code https://github.com/NickCoslley/website-from-github-wiki.wiki.git &> /dev/null }}
         uses: actions/checkout@v3
         with:
           repository: ${{ github.repository }}.wiski
