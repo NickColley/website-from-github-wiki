@@ -35,10 +35,10 @@ jobs:
             echo "flag set to false"
           fi
       - name: "Use flag if true"
-        if: env.flag
+        if: env.flag == true
         run: echo "Flag is available and true"
       - name: Checkout wiki repository
-        if: env.flag
+        if: env.flag == true
         uses: actions/checkout@v3
         with:
           repository: ${{ github.repository }}.wiski
