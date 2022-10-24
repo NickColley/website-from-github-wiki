@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>{{ page.fileSlug | slugToTitle }} – {{ siteTitle | slugToTitle }}</title>
+	<title>{{ page.fileSlug | deslug | capitalise }} – {{ siteTitle | deslug }}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 	<link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
 	<link rel="stylesheet" href="/assets/styles.css">
@@ -14,7 +14,7 @@
 		<div class="container">
 			<a class="header-link" href="/">
 				<span class="header-title">
-                    {{ siteTitle | slugToTitle }}
+                    {{ siteTitle | deslug | capitalise }}
                     <span class="visually-hidden">home</span>
                 </span>
 			</a>

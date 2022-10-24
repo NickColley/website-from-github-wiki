@@ -7,6 +7,6 @@
 {% endblock %}
 
 {% block content %}
-    <h1>{{ page.fileSlug | slugToTitle }}</h1>
+    <h1>{{ page.fileSlug | deslug | capitalise }}</h1>
     {{- super() -}}
 {% endblock %}

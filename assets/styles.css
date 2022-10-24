@@ -1,8 +1,8 @@
 :root {
   /* Colour palette */
-  --black: black;
-  --white: white;
-  --blue: blue;
+  --black: #0b0c0c;
+  --white: #fefefe;
+  --blue: #1d70b8;
   --light-grey: #d8dbde;
   --grey: #b1b4b6;
   --red: #d4351c;

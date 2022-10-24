@@ -4,8 +4,9 @@ const {
 } = require("./lib/plugin/default-frontmatter.cjs");
 
 const {
+  capitalise,
+  deslug,
   filterBy,
-  slugToTitle,
   textLength,
   print,
 } = require("./lib/filters.cjs");
@@ -39,8 +40,9 @@ module.exports = function (eleventyConfig) {
   });
 
   // Filters
+  eleventyConfig.addFilter("capitalise", capitalise);
+  eleventyConfig.addFilter("deslug", deslug);
   eleventyConfig.addFilter("filterBy", filterBy);
-  eleventyConfig.addFilter("slugToTitle", slugToTitle);
   eleventyConfig.addFilter("textLength", textLength);
   eleventyConfig.addFilter("print", print);
 
