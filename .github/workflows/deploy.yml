@@ -28,17 +28,15 @@ jobs:
       - name: Check if Wiki is available
         run: |
           if git ls-remote --exit-code https://githusb.com/NickColley/website-from-github-wiki.wiki.git &> /dev/null; then    
-            echo "flag=true" >> $GITHUB_ENV
-            echo "flag set to true"
+            echo "wikiExists=true" >> $GITHUB_ENV
+            echo "wikiExists set to true"
           else
-            echo "flag=false" >> $GITHUB_ENV
-            echo "flag set to false"
+            echo "wikiExists=false" >> $GITHUB_ENV
+            echo "wikiExists set to false"
           fi
-      - name: "Use flag if true"
-        if: env.flag == true
-        run: echo "Flag is available and true"
-      - name: Checkout wiki repository
-        if: env.flag == true
+      - name: "Use wikiExists if true"
+      - name: Checkout Wiki repository
+        if: env.wikiExists == true
         uses: actions/checkout@v3
         with:
           repository: ${{ github.repository }}.wiski
