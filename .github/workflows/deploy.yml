@@ -40,7 +40,7 @@ jobs:
         if: env.wikiExists
         run: echo "TRUEEEEE"
       - name: DEBUG WIKI EXISTS
-        if: !env.wikiExists
+        if: env.wikiExists == false
         run: echo "FLASSSEEE"
       - name: Checkout Wiki repository
         uses: actions/checkout@v3
