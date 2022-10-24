@@ -61,8 +61,6 @@ module.exports = function (eleventyConfig) {
     },
   });
 
-  eleventyConfig.addPlugin(GitHubWikiPlugin);
-
   // Use HTML comments to define frontmatter to keep wiki content cleaner.
   eleventyConfig.setFrontMatterParsingOptions({
     delims: ["<!---", "--->"],
