@@ -1,8 +1,8 @@
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 const {
   DefaultFrontmatterPlugin,
-} = require("./lib/plugin/default-frontmatter.cjs");
-const { HtmlTransformsPlugin } = require("./lib/plugin/html-transforms.cjs");
+  HtmlTransformsPlugin,
+} = require("./lib/plugins/index.cjs");
 
 const {
   capitalise,
@@ -25,15 +25,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(HtmlTransformsPlugin, {
     transforms: [relativeLinks],
   });
-
-  // Set default frontmatter
   eleventyConfig.addPlugin(DefaultFrontmatterPlugin, {
     all: {
       constants,
       layout: "page.njk",
-      siteTitle: GITHUB_REPOSITORY_NAME
-        ? GITHUB_REPOSITORY_NAME
-        : "website-from-github-wiki",
+      siteTitle: GITHUB_REPOSITORY_NAME ? GITHUB_REPOSITORY_NAME : "website",
     },
     "Home.md": {
       permalink: "/",
