@@ -36,12 +36,8 @@ jobs:
               echo "wikiExists=false" >> $GITHUB_ENV
               echo "Repository '$wikiRemoteUrl' does not exist.";
           fi
-      - name: Show output of wikiExists2
-        run: ${{ env.wikiExists }}
-      - name: Show output of wikiExists
-        run: ${{ env.wikiExists == true }}
       - name: Checkout Wiki repository
-        if: ${{ env.wikiExists == true }}
+        if: ${{ env.wikiExists }}
         uses: actions/checkout@v3
         with:
           repository: ${{ github.repository }}.wiski
