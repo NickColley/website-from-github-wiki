@@ -1,4 +1,4 @@
-if [[ -z "${CI}" ]]; then
+if [ $CI ]; then
     echo "Running in CI, already cloned wiki files as part of GitHub actions..."
 else
     outputDirectory="_wiki"
