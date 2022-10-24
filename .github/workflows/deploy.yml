@@ -30,14 +30,14 @@ jobs:
           wikiRemoteUrl="${{ github.server_url }}/${{ github.repository }}.wiki.git"
           echo "Checking if repository '$wikiRemoteUrl' exists...";
           if git ls-remote --exit-code $wikiRemoteUrl &> /dev/null; then
-              echo "wikiExists=true" >> $GITHUB_ENV
+              echo "wikiExists=false" >> $GITHUB_ENV
               echo "Repository'$wikiRemoteUrl' does exist.";
           else
-              echo "wikiExists=false" >> $GITHUB_ENV
+              echo "wikiExists=true" >> $GITHUB_ENV
               echo "Repository '$wikiRemoteUrl' does not exist.";
           fi
       - name: DEBUG WIKI EXISTS
-        if: env.wikiExists
+        if: env.wikiExists == true
         run: echo "TRUEEEEE"
       - name: DEBUG WIKI EXISTS
         if: env.wikiExists == false
