@@ -2,6 +2,7 @@ const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 const {
   DefaultFrontmatterPlugin,
 } = require("./lib/plugin/default-frontmatter.cjs");
+const { HtmlTransformsPlugin } = require("./lib/plugin/html-transforms.cjs");
 
 const {
   capitalise,
@@ -10,6 +11,8 @@ const {
   textLength,
   print,
 } = require("./lib/filters.cjs");
+const { relativeLinks } = require("./lib/transforms.cjs");
+
 const constants = require("./lib/constants.cjs");
 const { BASE_HREF, GITHUB_REPOSITORY_NAME } = constants;
 
@@ -18,6 +21,9 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin, {
     baseHref: BASE_HREF,
+  });
+  eleventyConfig.addPlugin(HtmlTransformsPlugin, {
+    transforms: [relativeLinks],
   });
 
   // Set default frontmatter
@@ -48,15 +54,6 @@ module.exports = function (eleventyConfig) {
 
   // Ensure our untracked _wiki input can be used as an input.
   eleventyConfig.setUseGitIgnore(false);
-
-  // Resolve relative links
-  eleventyConfig.addTransform("relative-links", function (content, outputPath) {
-    if (outputPath && outputPath.endsWith(".html")) {
-      const transformedContent = content.replace(/href=['|"]\.\//g, `href="/`);
-      return transformedContent;
-    }
-    return content;
-  });
 
   return {
     dir: {
