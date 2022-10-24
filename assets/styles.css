@@ -1,0 +1,442 @@
+:root {
+  /* Colour palette */
+  --black: black;
+  --white: white;
+  --blue: blue;
+  --light-grey: #d8dbde;
+  --grey: #b1b4b6;
+  --red: #d4351c;
+
+  /* Applied colours */
+  --light-color: var(--white);
+  --dark-color: var(--black);
+  --text-color: var(--dark-color);
+  --background-color: var(--light-color);
+  --link-color: var(--blue);
+
+  --font-family: -apple-system, linkMacSystemFont, "Helvetica Neue",
+    "Helvetica", "Arial", sans-serif;
+  --code-padding: 0.5rem;
+  --underline-offset: 0.1em;
+  --line-thickness: 0.1em;
+  --line-thickness-big: 0.175em;
+  --measure: 56ch;
+  --outline-width: 0.125rem;
+  --outline-offset: 0.25rem;
+  --outline-color: var(--text-color);
+  --container-padding: 5vw;
+  --main-padding-top: 2rem;
+  --main-padding-bottom: 5rem;
+}
+
+::-moz-selection {
+  background: var(--link-color);
+  color: var(--background-color);
+}
+::selection {
+  background: var(--link-color);
+  color: var(--background-color);
+}
+
+html {
+  scroll-padding: 1.4rem;
+}
+
+body {
+  font-size: clamp(1rem, 0.763rem + 1.1852vw, 1.4rem);
+  line-height: 1.5;
+  font-family: var(--font-family);
+  background: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+.skip-link {
+  display: block;
+  padding: 1rem 2rem;
+  background: var(--background-color);
+  color: var(--link-color);
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.content {
+  background: var(--background-color);
+  max-width: var(--measure);
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: underline;
+  text-decoration-skip-ink: auto;
+  text-underline-offset: var(--underline-offset);
+  text-decoration-thickness: var(--line-thickness);
+}
+
+a:focus,
+a:hover {
+  text-decoration-thickness: var(--line-thickness-big);
+}
+
+a:not(header a):not(main a):not(footer a):not(:hover):not(:focus) {
+  color: currentColor;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 1em;
+  margin-bottom: 0.6em;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  line-height: 1.2;
+}
+
+.h1,
+h1 {
+  max-width: 15ch;
+  font-size: clamp(2.4rem, 1.4519rem + 4.7407vw, 4rem);
+  margin-top: 0.5em;
+  margin-bottom: 0.8em;
+}
+
+.h2,
+h2 {
+  font-size: clamp(2rem, 1.763rem + 1.1852vw, 2.4rem);
+}
+
+.h3,
+h3 {
+  font-size: clamp(1.8rem, 1.6815rem + 0.5926vw, 2rem);
+}
+
+.h4,
+.h5,
+.h6,
+h4,
+h5,
+h6 {
+  font-size: clamp(1.4rem, 1.2815rem + 0.5926vw, 1.6rem);
+}
+
+li > :where(h2, h3, h4, h5, h6) {
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+blockquote {
+  border-left: 0.4rem solid var(--grey);
+  margin-left: 0;
+  padding-left: 1rem;
+}
+
+p,
+ul,
+ol,
+pre {
+  max-width: var(--measure);
+}
+p,
+ul,
+ol,
+pre {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+main ol,
+main ul {
+  padding-left: 1rem;
+}
+main li {
+  margin-bottom: 0.3rem;
+}
+
+code,
+pre {
+  font-size: 1.2rem;
+}
+
+:not(pre) > code {
+  --code-adjustment: 2px;
+  position: relative;
+  top: calc(-1 * var(--code-adjustment));
+  padding: 0 calc(var(--code-padding) * 0.5) var(--code-adjustment);
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+  outline: var(--line-thickness) solid;
+  border-radius: 0.3em;
+}
+
+pre {
+  padding: 1.5rem;
+  border-radius: 1em;
+  border: var(--line-thickness) solid;
+  border-radius: 0.3em;
+  overflow-y: hidden;
+}
+
+pre > code {
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  margin: 0;
+  max-width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.8rem 1rem;
+  border: 2px solid var(--grey);
+}
+
+th {
+  background: var(--light-grey);
+}
+
+table,
+.table-responsive {
+  margin-bottom: 1.5rem;
+}
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.table-responsive > table {
+  max-width: var(--measure);
+  margin-bottom: 0;
+}
+
+main > img {
+  display: block;
+  margin: 0;
+  max-width: 100%;
+}
+
+main {
+  padding-top: var(--main-padding-top);
+  padding-bottom: var(--main-padding-bottom);
+}
+main :first-child {
+  margin-top: 0;
+}
+main :last-child {
+  margin-bottom: 0;
+}
+
+hr {
+  margin: 0;
+  margin-bottom: 2rem;
+  border: 0;
+  border-top: var(--line-thickness-big) solid var(--grey);
+}
+
+.header {
+  color: var(--background-color);
+  background: var(--text-color);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  --outline-color: currentColor;
+}
+
+.header-link {
+  display: inline-block;
+  color: currentColor;
+  font-size: 1.3rem;
+  --underline-offset: 0.3em;
+  --line-thickness-big: 0.15em;
+}
+.header-link:not(:hover):not(:focus) {
+  text-decoration: none;
+}
+
+.header-link:focus::after,
+.header-link:hover::after {
+  border-color: currentColor;
+}
+
+.header-title {
+  font-size: 1.84em;
+  font-weight: bold;
+}
+
+.back-link {
+  position: relative;
+  margin-top: var(--main-padding-top);
+  display: inline-block;
+}
+.back-link:focus {
+  outline: none;
+}
+.back-link:focus::after {
+  outline: var(--outline-width) solid var(--outline-color);
+}
+/* Increase touch area size */
+.back-link::after {
+  content: "";
+  position: absolute;
+  top: -0.3em;
+  bottom: -0.35em;
+  left: -0.8em;
+  right: -0.4em;
+  background: transparent;
+}
+.back-link::before {
+  --chevron-thickness: var(--line-thickness);
+  content: "";
+  position: relative;
+  display: inline-block;
+  top: -0.06em;
+  height: 0.36em;
+  width: 0.36em;
+  margin-left: -0.4em;
+  margin-right: 0.125em;
+  transform: rotate(-135deg);
+  border-style: solid;
+  border-width: var(--chevron-thickness) var(--chevron-thickness) 0 0;
+  border-color: var(--link-color);
+}
+
+.back-to-top {
+  position: relative;
+  display: inline-block;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.back-to-top:focus {
+  outline: none;
+}
+.back-to-top:focus::before {
+  outline: var(--outline-width) solid var(--outline-color);
+}
+/* Increase touch area size */
+.back-to-top::before {
+  content: "";
+  position: absolute;
+  top: -0.3em;
+  bottom: -0.35em;
+  left: -0.8em;
+  right: -0.4em;
+  background: transparent;
+}
+.back-to-top::after {
+  --chevron-thickness: var(--line-thickness);
+  content: "";
+  position: relative;
+  display: inline-block;
+  height: 0.36em;
+  width: 0.36em;
+  margin-left: 0.4em;
+  transform: rotate(315deg);
+  border-style: solid;
+  border-width: var(--chevron-thickness) var(--chevron-thickness) 0 0;
+  border-color: var(--link-color);
+}
+
+.footer {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background: var(--text-color);
+  box-shadow: 0 100rem 0 100rem var(--text-color);
+  color: var(--background-color);
+}
+.footer a {
+  color: currentColor;
+}
+.footer :focus {
+  --outline-color: currentColor;
+}
+.footer-inline-links {
+  list-style: none;
+  padding: 0;
+}
+.footer-inline-links li {
+  margin-bottom: 1rem;
+}
+@media (min-width: 60rem) {
+  .footer-inline-links {
+    --footer-inline-links-gap: 0.8rem;
+    display: inline-flex;
+    margin: 0;
+    gap: var(--footer-inline-links-gap);
+  }
+  .footer-inline-links li {
+    margin: 0;
+  }
+  .footer-inline-links li:not(:last-child)::after {
+    content: "\2013";
+    margin-left: var(--footer-inline-links-gap);
+  }
+}
+
+:focus {
+  outline: var(--outline-width) solid var(--outline-color);
+  outline-offset: var(--outline-offset);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.visually-hidden-focusable {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.visually-hidden-focusable:active,
+.visually-hidden-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  -webkit-clip-path: none;
+  clip-path: none;
+  white-space: inherit;
+}

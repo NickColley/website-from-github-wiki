@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>{{ page.fileSlug | slugToTitle }} – {{ siteTitle }}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	<link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+	<link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body id="top">
+	<a class="skip-link visually-hidden-focusable" href="#content">Skip to content</a>
+	<header class="header">
+		<div class="container">
+			<a class="header-link" href="/" aria-label="Home">
+				<span class="header-title">{{ siteTitle }}</span>
+			</a>
+		</div>
+	</header>
+	<div class="container">
+		<div class="content">
+			{% block beforeContent %}{% endblock %}
+			<main id="content">
+				{% block content %}{{ content | safe }}{% endblock %}
+			</main>
+			{%- if (content | textLength) > 500 -%}
+				<a class="back-to-top" href="#top">Back to top</a>
+			{%- endif -%}
+		</div>
+	</div>
+	<footer class="footer">
+		<div class="container">
+			{%- set wikiPageBaseURL = "https://github.com/" + constants.GITHUB_REPOSITORY + "/wiki/" + page.fileSlug -%}
+			<ul class="footer-inline-links">
+				<li>
+					<a href="{{ wikiPageBaseURL }}/_edit">
+						Edit this page
+					</a>
+				</li>
+			</ul>
+		</div>
+	</footer>
+    <script src="/assets/scripts.js"></script>
+</body>
+
+</html>
