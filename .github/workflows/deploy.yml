@@ -26,13 +26,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Checkout wiki repository
+        if: git ls-remote --exit-code https://github.com/NickCoslley/website-from-github-wiki.wiki.git &> /dev/null
         uses: actions/checkout@v3
         with:
           repository: ${{ github.repository }}.wiski
           ref: master
           path: _wiki
       - name: Setup Node
-        if: always()
         uses: actions/setup-node@v3
         with:
           node-version: 16
