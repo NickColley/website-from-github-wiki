@@ -2,48 +2,6 @@ const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 
 const { BASE_HREF } = require("./lib/constants.cjs");
 
-const { access } = require("node:fs/promises");
-const { parse } = require("node:path");
-const execSync = require("node:child_process").execSync;
-const exec = (command) => {
-  return new Promise((resolve, reject) => {
-    console.log(`[exec]: ${command}`);
-    try {
-      const stdout = execSync(command, { stdio: ["pipe"] });
-      const trimmedOutput = stdout.toString().trim();
-      resolve(trimmedOutput);
-    } catch (stderr) {
-      reject(stderr);
-    }
-  });
-};
-
-async function getGitHubWiki(cloneDirectory) {
-  if (!cloneDirectory) {
-    throw new Error("No input directory to output to supplied");
-  }
-  try {
-    await access(cloneDirectory);
-  } catch (error) {
-    console.log("Getting source files...");
-    const remoteName = await exec(
-      'git branch --list "$(git branch --show-current)" "--format=%(upstream:remotename)"'
-    );
-    const remoteUrl = await exec(`git remote get-url ${remoteName}`);
-    const { dir, ext, name } = parse(remoteUrl);
-    const extension = ext ? ext : ".git";
-    const wikiRepositoryUrl = `${dir}/${name}.wiki${extension}`;
-    await exec(`git clone ${wikiRepositoryUrl} ${cloneDirectory}`);
-  }
-}
-
-const GitHubWikiPlugin = (eleventyConfig) => {
-  eleventyConfig.on("eleventy.before", async ({ dir }) => {
-    const { input } = dir;
-    await getGitHubWiki(input);
-  });
-};
-
 const {
   TemplatePath: { join, normalize, getExtension },
 } = require("@11ty/eleventy-utils");
