@@ -49,6 +49,15 @@ module.exports = function (eleventyConfig) {
   // Ensure our untracked _wiki input can be used as an input.
   eleventyConfig.setUseGitIgnore(false);
 
+  // Resolve relative links
+  eleventyConfig.addTransform("relative-links", function (content, outputPath) {
+    if (outputPath && outputPath.endsWith(".html")) {
+      const transformedContent = content.replace(/href=['|"]\.\//g, `href="/`);
+      return transformedContent;
+    }
+    return content;
+  });
+
   return {
     dir: {
       includes: "../_includes",
