@@ -25,12 +25,17 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Checkout wiki repository
-        uses: actions/checkout@v3
         with:
-          repository: ${{ github.repository }}.wiki
-          ref: master
-          path: _wiki
+          # Use Git tokens elsewhere
+          persist-credentials: false
+      - name: tesssst
+        run: git clone git@github.com:NickColley/website-from-github-wiki.wiki.git _wiki
+      # - name: Checkout wiki repository
+      #   uses: actions/checkout@v3
+      #   with:
+      #     repository: ${{ github.repository }}.wiki
+      #     ref: master
+      #     path: _wiki
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
