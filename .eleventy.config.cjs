@@ -1,7 +1,8 @@
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
+
 const {
   DefaultFrontmatterPlugin,
-  MarkdownRemarkPlugin,
+  RemarkPlugin,
 } = require("./lib/plugins/index.cjs");
 
 const {
@@ -21,7 +22,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin, {
     baseHref: BASE_HREF,
   });
-  eleventyConfig.addPlugin(MarkdownRemarkPlugin);
+  eleventyConfig.addPlugin(RemarkPlugin, {
+    plugins: ["./lib/markdown/relative-links.js"],
+  });
+
   eleventyConfig.addPlugin(DefaultFrontmatterPlugin, {
     all: {
       constants,
