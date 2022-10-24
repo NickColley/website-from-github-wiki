@@ -25,8 +25,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        run: |
+          if git ls-remote --exit-code https://github.com/NickColley/website-from-github-wiki.wiki.git &> /dev/null; then    
+            echo "flag=true" >> $GITHUB_ENV
+            echo "flag set to true"
+          else
+            echo "flag=false" >> $GITHUB_ENV
+            echo "flag set to false"
+          fi
+      - name: "Use flag if true"
+        if: env.flag
+        run: echo "Flag is available and true"
       - name: Checkout wiki repository
-        if: ${{ git ls-remote --exit-code https://github.com/NickCoslley/website-from-github-wiki.wiki.git &> /dev/null }}
+        if: env.flag
         uses: actions/checkout@v3
         with:
           repository: ${{ github.repository }}.wiski
