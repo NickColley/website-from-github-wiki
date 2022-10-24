@@ -27,12 +27,14 @@ jobs:
         uses: actions/checkout@v3
       - name: Check if Wiki is available
         run: |
-          if git ls-remote --exit-code https://githusb.com/NickColley/website-from-github-wiki.wiki.git &> /dev/null; then    
-            echo "wikiExists=true" >> $GITHUB_ENV
-            echo "wikiExists set to true"
+          wikiRemoteUrl="${{ github.server_url }}/${{ github.repository }}.wiki.git"
+          echo "Checking if repository '$wikiRemoteUrl' exists...";
+          if git ls-remote --exit-code $wikiRemoteUrl &> /dev/null; then
+              echo "wikiExists=true" >> $GITHUB_ENV
+              echo "Repository'$wikiRemoteUrl' does exist.";
           else
-            echo "wikiExists=false" >> $GITHUB_ENV
-            echo "wikiExists set to false"
+              echo "wikiExists=false" >> $GITHUB_ENV
+              echo "Repository '$wikiRemoteUrl' does not exist.";
           fi
       - name: Checkout Wiki repository
         if: env.wikiExists == true
