@@ -34,7 +34,6 @@ jobs:
             echo "wikiExists=false" >> $GITHUB_ENV
             echo "wikiExists set to false"
           fi
-      - name: "Use wikiExists if true"
       - name: Checkout Wiki repository
         if: env.wikiExists == true
         uses: actions/checkout@v3
