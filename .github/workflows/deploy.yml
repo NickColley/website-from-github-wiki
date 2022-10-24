@@ -28,7 +28,7 @@ jobs:
       - name: Checkout wiki repository
         uses: actions/checkout@v3
         with:
-          repository: git@github.com:NickColley/website-from-github-wiki.wiki.git
+          repository: NickColley/website-from-github-wiki.wiki
           ref: master
           path: _wiki
       - name: Setup Node
