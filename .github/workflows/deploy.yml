@@ -25,6 +25,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Check if Wiki is available
         run: |
           if git ls-remote --exit-code https://github.com/NickColley/website-from-github-wiki.wiki.git &> /dev/null; then    
             echo "flag=true" >> $GITHUB_ENV
