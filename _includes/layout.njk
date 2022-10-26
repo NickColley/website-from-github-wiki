@@ -1,10 +1,13 @@
+{%- set documentTitle %}{{- page.fileSlug | deslug | capitalise }} – {{ websiteTitle -}}{% endset -%}
+{%- set description %}{{ websiteDescription }}{% endset -%}
 <!doctype html>
 <html lang="en">
-
 <head>
 	<meta charset="utf-8">
-	<title>{{ page.fileSlug | deslug | capitalise }} – {{ websiteTitle | deslug }}</title>
+	<title>{{ documentTitle }}</title>
+	<meta name="description" content="{{ description }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% include "_social-meta-tags.njk" %}
 	<link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
 	<link rel="stylesheet" href="/assets/styles.css">
 </head>

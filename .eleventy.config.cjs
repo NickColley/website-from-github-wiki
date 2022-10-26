@@ -54,9 +54,8 @@ module.exports = function (eleventyConfig) {
     all: {
       constants,
       layout: "page.njk",
-      websiteTitle: GITHUB_REPOSITORY_NAME
-        ? GITHUB_REPOSITORY_NAME
-        : "website-from-github-wiki",
+      websiteDescription: "A website generated from a GitHub wiki",
+      websiteTitle: deslug(GITHUB_REPOSITORY_NAME),
     },
     "Home.md": {
       permalink: "/",
