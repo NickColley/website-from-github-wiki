@@ -14,8 +14,7 @@ else
         echo "Cleaning up '${outputDirectory}'..."
         rm -rf $outputDirectory
     fi
-    remoteName=$(git branch --list "$(git branch --show-current)" "--format=%(upstream:remotename)")
-    remoteUrl=$(git remote get-url ${remoteName})
+    remoteUrl=$(./bin/get-remote-url.sh)
     # If there is a git extension remove it
     removedGitExtension=${remoteUrl/\.git/}
     wikiRemoteUrl="${removedGitExtension}.wiki.git"
