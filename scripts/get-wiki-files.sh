@@ -5,7 +5,7 @@ if [ -d $OUTPUT_DIRECTORY ]; then
     echo "Cleaning up '${OUTPUT_DIRECTORY}'..."
     rm -rf $OUTPUT_DIRECTORY
 fi
-REMOTE_URL=$(./bin/get-remote-url.sh)
+REMOTE_URL=$(./scripts/get-remote-url.sh)
 # If there is a git extension remove it
 REMOVED_GIT_EXTENSION=${REMOTE_URL/\.git/}
 WIKI_REMOTE_URL="${REMOVED_GIT_EXTENSION}.wiki.git"
