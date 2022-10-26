@@ -42,7 +42,7 @@ module.exports = function (eleventyConfig) {
         "remark-wiki-link",
         {
           pageResolver: (name) => [name.replace(/ /g, "-")],
-          hrefTemplate: (path) => `${BASE_HREF}${path}`,
+          hrefTemplate: (path) => `/${path}`,
         },
       ],
     ],
