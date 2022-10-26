@@ -18,7 +18,7 @@ const {
 } = require("./lib/filters.cjs");
 
 const constants = require("./lib/constants.cjs");
-const { BASE_HREF, GITHUB_REPOSITORY_NAME } = constants;
+const { BASE_HREF, GITHUB_REPOSITORY, GITHUB_REPOSITORY_NAME } = constants;
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("assets");
@@ -31,6 +31,20 @@ module.exports = function (eleventyConfig) {
     plugins: [
       "./lib/markdown/relative-links.js",
       "./lib/markdown/aria-current-links.js",
+      "remark-breaks",
+      "remark-emoji",
+      "remark-footnotes",
+      "remark-gfm",
+      ["remark-github", { repository: GITHUB_REPOSITORY }],
+      "remark-slug",
+      "remark-smartypants",
+      [
+        "remark-wiki-link",
+        {
+          pageResolver: (name) => [name.replace(/ /g, "-")],
+          hrefTemplate: (path) => `${BASE_HREF}${path}`,
+        },
+      ],
     ],
   });
 
