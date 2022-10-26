@@ -1,3 +1,5 @@
+#!/bin/bash
+
 outputDirectory="_wiki"
 if [ $CI ]; then
     # If the output directory does not exist setup a placeholder.
