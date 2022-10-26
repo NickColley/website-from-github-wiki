@@ -272,7 +272,7 @@ hr {
   color: var(--background-color);
   background: var(--text-color);
   padding-top: 1.5rem;
-  padding-bottom: 0.8rem;
+  padding-bottom: 1rem;
   --outline-color: currentColor;
 }
 
