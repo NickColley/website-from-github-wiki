@@ -13,12 +13,15 @@ const {
   deslug,
   fileExists,
   filterBy,
+  formatDate,
+  gitHistory,
   textLength,
   print,
 } = require("./lib/filters.cjs");
 
 const constants = require("./lib/constants.cjs");
-const { BASE_HREF, GITHUB_REPOSITORY, GITHUB_REPOSITORY_NAME } = constants;
+const { INPUT, BASE_HREF, GITHUB_REPOSITORY, GITHUB_REPOSITORY_NAME } =
+  constants;
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("assets");
@@ -70,6 +73,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("capitalise", capitalise);
   eleventyConfig.addFilter("deslug", deslug);
   eleventyConfig.addFilter("fileExists", fileExists);
+  eleventyConfig.addFilter("formatDate", formatDate);
+  eleventyConfig.addFilter("gitHistory", gitHistory);
   eleventyConfig.addFilter("filterBy", filterBy);
   eleventyConfig.addFilter("textLength", textLength);
   eleventyConfig.addFilter("print", print);
@@ -80,7 +85,7 @@ module.exports = function (eleventyConfig) {
   return {
     dir: {
       includes: "../_includes",
-      input: "_wiki",
+      input: INPUT,
     },
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",

@@ -45,8 +45,14 @@
                 {% renderFile "_wiki/_Footer.md" %}
             {% endif %}
             <div class="footer-inline-links">
-                {%- set wikiPageBaseURL = "https://github.com/" + constants.GITHUB_REPOSITORY + "/wiki/" + page.fileSlug -%}
-                <ul>
+				{%- set wikiPageBaseURL = "https://github.com/" + constants.GITHUB_REPOSITORY + "/wiki/" + page.fileSlug -%}
+				{%- set log = page.inputPath | gitHistory -%}
+				<ul class="footer-inline-links">
+					<li>
+						<a href="{{ wikiPageBaseURL }}/_compare/{{ log.latest.hash }}?diff=unified">
+							{{- log.latest.author_name }} edited this page {{ log.latest.date | formatDate -}}
+						</a>
+					</li>
                     <li>
                         <a href="{{ wikiPageBaseURL }}/_edit">
                             Edit this page
@@ -54,6 +60,16 @@
                     </li>
                 </ul>
 			</div>
+			{% if not constants.DEPLOYED %}
+				<hr/>
+				<h2 class="margin-top-0">Development data</h2>
+				<h3>Constants</h3>
+				<pre><code>{{ constants | dump(2) }}</code></pre>
+				<h3>Page</h3>
+				<pre><code>{{ page | dump(2) }}</code></pre>
+				<h3>Git Log</h3>
+				<pre><code>{{ log | dump(2) }}</code></pre>
+			{% endif %}
 		</div>
 	</footer>
     <script src="/assets/scripts.js"></script>

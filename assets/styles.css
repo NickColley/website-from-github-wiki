@@ -282,9 +282,10 @@ main li > ul {
   padding-left: 1.5rem;
 }
 
-main hr {
+hr {
   margin: 0;
-  margin-bottom: 2rem;
+  margin-bottom: calc(1.5 * var(--vertical-spacing));
+  margin-top: calc(1.5 * var(--vertical-spacing));
   border: 0;
   border-top: var(--line-thickness) solid var(--border-color);
 }
@@ -314,8 +315,6 @@ aside li ul > li::marker {
 .header-hr {
   margin: 0;
   margin-top: 0.8rem;
-  border: 0;
-  border-top: var(--line-thickness) solid var(--border-color);
 }
 
 .header-link {
@@ -455,6 +454,10 @@ aside li ul > li::marker {
 :focus {
   outline: var(--outline-width) solid var(--outline-color);
   outline-offset: var(--outline-offset);
+}
+
+.margin-top-0 {
+  margin-top: 0;
 }
 
 [hidden] {
