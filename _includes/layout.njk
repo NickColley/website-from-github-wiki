@@ -48,11 +48,13 @@
 				{%- set wikiPageBaseURL = "https://github.com/" + constants.GITHUB_REPOSITORY + "/wiki/" + page.fileSlug -%}
 				{%- set log = page.inputPath | gitLog -%}
 				<ul class="footer-inline-links">
-					<li>
-						<a href="{{ wikiPageBaseURL }}/_compare/{{ log.commit }}?diff=unified">
-							{{- log.author }} edited this page {{ log.date | formatDate -}}
-						</a>
-					</li>
+					{% if log | length %}
+						<li>
+							<a href="{{ wikiPageBaseURL }}/_compare/{{ log.commit }}?diff=unified">
+								{{- log.author }} edited this page {{ log.date | formatDate -}}
+							</a>
+						</li>
+					{% endif %}
                     <li>
                         <a href="{{ wikiPageBaseURL }}/_edit">
                             Edit this page
