@@ -9,7 +9,7 @@ REMOTE_URL=$(./scripts/get-remote-url.sh)
 # If there is a git extension remove it
 REMOVED_GIT_EXTENSION=${REMOTE_URL/\.git/}
 WIKI_REMOTE_URL="${REMOVED_GIT_EXTENSION}.wiki.git"
-if git ls-remote --exit-code $wikiRemoteUrl &> /dev/null; then
+if git ls-remote --exit-code $WIKI_REMOTE_URL &> /dev/null; then
     git clone $WIKI_REMOTE_URL $OUTPUT_DIRECTORY
 else
     echo "Remote repo '${WIKI_REMOTE_URL}' does not exist."
