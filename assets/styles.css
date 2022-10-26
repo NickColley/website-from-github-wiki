@@ -3,7 +3,7 @@
   --black: #0b0c0c;
   --white: #fefefe;
   --blue: #1d70b8;
-  --light-grey: #d8dbde;
+  --light-grey: #cbcbcb;
   --grey: #b1b4b6;
   --dark-grey: #505a5f;
   --red: #d4351c;
@@ -17,19 +17,23 @@
   --link-color: var(--blue);
   --header-text-color: var(--blue);
 
-  --font-family: -apple-system, linkMacSystemFont, "Helvetica Neue",
-    "Helvetica", "Arial", sans-serif;
+  --font-family: -apple-system, linkMacSystemFont, "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif;
   --code-padding: 0.5rem;
-  --underline-offset: 0.1em;
-  --line-thickness: 0.1em;
-  --line-thickness-big: 0.175em;
+  --underline-offset: 0.125em;
+  --underline-thickness: 0.1rem;
+  --underline-thickness-big: 0.2rem;
+  --line-thickness: 0.0625rem;
+  --line-thickness-big: 0.125rem;
   --measure: 56ch;
+  --border-radius: 0.5rem;
   --outline-width: 0.125rem;
   --outline-offset: 0.25rem;
-  --outline-color: var(--text-color);
+  --outline-color: currentColor;
   --container-padding: 5vw;
-  --main-padding-top: 2rem;
+  --main-padding-top: 3rem;
   --main-padding-bottom: 3rem;
+  --vertical-spacing: 1.5rem;
 }
 
 ::-moz-selection {
@@ -72,22 +76,22 @@ a {
   text-decoration: underline;
   text-decoration-skip-ink: auto;
   text-underline-offset: var(--underline-offset);
-  text-decoration-thickness: var(--line-thickness);
+  text-decoration-thickness: var(--underline-thickness);
 }
 
 a:focus,
 a:hover {
-  text-decoration-thickness: var(--line-thickness-big);
+  text-decoration-thickness: var(--underline-thickness-big);
 }
 
 a:not(header a):not(main a):not(footer a):not(:focus):not(:active):not(:hover) {
   color: currentColor;
 }
 
-[aria-current=true] {
+[aria-current="true"] {
   color: currentColor;
 }
-[aria-current=true]:not(:focus):not(:active):not(:hover) {
+[aria-current="true"]:not(:focus):not(:active):not(:hover) {
   text-decoration: none;
 }
 
@@ -97,7 +101,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 1em;
+  margin-top: 1.5em;
   margin-bottom: 0.6em;
 }
 h1,
@@ -158,50 +162,32 @@ ul,
 ol,
 pre {
   margin-top: 0;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--vertical-spacing);
 }
-main ol,
-main ul {
-  padding: 0;
-  padding-left: 1rem;
-}
-main li:not(:last-of-type) {
-  margin-bottom: 0.3rem;
-}
-main li > ol,
-main li > ul {
-  margin-top: 0.3rem;
-  margin-bottom: 0.5rem;
-  padding-left: 1.5rem;
-}
+
 code,
 pre {
   font-size: 1.2rem;
+  font-family: monospace, monospace;
+  background-color: var(--code-background-color);
 }
-
-:not(pre) > code {
-  --code-adjustment: 2px;
-  position: relative;
-  top: calc(-1 * var(--code-adjustment));
-  padding: 0 calc(var(--code-padding) * 0.5) var(--code-adjustment);
-  margin-left: 0.2em;
-  margin-right: 0.2em;
-  outline: var(--line-thickness) solid;
-  border-radius: 0.3em;
-}
-
 pre {
-  padding: 1.5rem;
-  border-radius: 1em;
-  border: var(--line-thickness) solid;
-  border-radius: 0.3em;
-  overflow-y: hidden;
+  overflow-y: auto;
+  margin-top: 0;
+  padding: 1em;
+  border: var(--line-thickness-big) solid var(--border-color);
+  border-radius: calc(1.5 * var(--border-radius));
 }
-
-pre > code {
-  box-shadow: none;
-  margin: 0;
-  padding: 0;
+:not(pre) > code {
+  padding: 0 0.3em 0.125em;
+  line-height: 1;
+  margin: 0 0.2em;
+  border: var(--line-thickness) solid var(--border-color);
+  border-radius: var(--border-radius);
+  white-space: nowrap;
+}
+p + pre {
+  margin-top: -0.5rem;
 }
 
 table {
@@ -224,7 +210,7 @@ th {
 
 table,
 .table-responsive {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--vertical-spacing);
 }
 
 .table-responsive {
@@ -238,12 +224,6 @@ table,
 .table-responsive > table {
   max-width: var(--measure);
   margin-bottom: 0;
-}
-
-main img {
-  display: block;
-  margin: 0;
-  max-width: 100%;
 }
 
 main {
@@ -280,6 +260,35 @@ main > :first-child {
   margin-top: 0;
 }
 
+main img {
+  display: block;
+  margin: 0;
+  max-width: 100%;
+  border: var(--line-thickness-big) solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+main ol,
+main ul {
+  padding: 0;
+  padding-left: 1rem;
+}
+main li:not(:last-of-type) {
+  margin-bottom: 0.4rem;
+}
+main li > ol,
+main li > ul {
+  margin-top: 0.3rem;
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+main hr {
+  margin: 0;
+  margin-bottom: 2rem;
+  border: 0;
+  border-top: var(--line-thickness) solid var(--border-color);
+}
+
 aside ul {
   margin: 0;
   padding: 0;
@@ -294,23 +303,19 @@ aside li ul {
   padding-left: 1.25em;
 }
 aside li ul > li::marker {
-  content: '\2014\2002';
-}
-
-hr {
-  margin: 0;
-  margin-bottom: 2rem;
-  border: 0;
-  border-top: var(--line-thickness-big) solid var(--border-color);
+  content: "\2014\2002";
 }
 
 .header {
-  padding-top: 1.5rem;
-  padding-bottom: 1.125rem;
+  padding-top: 2.2rem;
   color: var(--header-text-color);
   background-color: var(--header-background-color);
-  border-bottom: var(--line-thickness) solid var(--border-color);
-  --outline-color: currentColor;
+}
+.header-hr {
+  margin: 0;
+  margin-top: 0.8rem;
+  border: 0;
+  border-top: var(--line-thickness) solid var(--border-color);
 }
 
 .header-link {
@@ -319,7 +324,6 @@ hr {
   font-size: 1.3rem;
   line-height: 1.2;
   --underline-offset: 0.3em;
-  --line-thickness-big: 0.15em;
 }
 .header-link:not(:hover):not(:focus) {
   text-decoration: none;
@@ -409,7 +413,7 @@ hr {
 
 .footer {
   color: var(--footer-text-color);
-  border-top: var(--line-thickness) solid var(--border-color);
+  border-top: var(--line-thickness-big) solid var(--border-color);
   background: var(--footer-background-color);
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -423,7 +427,7 @@ hr {
 }
 
 .footer-inline-links:not(:last-child) {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--vertical-spacing);
 }
 .footer-inline-links ul {
   list-style: none;
