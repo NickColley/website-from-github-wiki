@@ -1,5 +1,5 @@
 #!/bin/bash
 
-remoteName=$(git branch --list "$(git branch --show-current)" "--format=%(upstream:remotename)")
-remoteUrl=$(git remote get-url ${remoteName})
-echo -n $remoteUrl;
+REMOTE_NAME=$(git branch --list "$(git branch --show-current)" "--format=%(upstream:remotename)")
+REMOTE_URL=$(git remote get-url ${REMOTE_NAME})
+echo -n $REMOTE_URL;

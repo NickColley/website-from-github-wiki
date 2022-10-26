@@ -1,22 +1,22 @@
 #!/bin/bash
 
-outputDirectory="_wiki"
+OUTPUT_DIRECTORY="_wiki"
 if [ $CI ]; then
     # If the output directory does not exist setup a placeholder.
-    if ! [ -d $outputDirectory ]; then
+    if ! [ -d $OUTPUT_DIRECTORY ]; then
         echo "No source files, so create a placeholder..."
-        placeholder="[Create your first wiki page](https://github.com/$GITHUB_REPOSITORY/wiki)"
-        mkdir $outputDirectory
-        echo $placeholder > "$outputDirectory/Home.md"
+        PLACEHOLDER="[Create your first wiki page](https://github.com/$GITHUB_REPOSITORY/wiki)"
+        mkdir $OUTPUT_DIRECTORY
+        echo $PLACEHOLDER > "$OUTPUT_DIRECTORY/Home.md"
     fi
 else
-    if [ -d $outputDirectory ]; then
-        echo "Cleaning up '${outputDirectory}'..."
-        rm -rf $outputDirectory
+    if [ -d $OUTPUT_DIRECTORY ]; then
+        echo "Cleaning up '${OUTPUT_DIRECTORY}'..."
+        rm -rf $OUTPUT_DIRECTORY
     fi
-    remoteUrl=$(./bin/get-remote-url.sh)
+    REMOTE_URL=$(./bin/get-remote-url.sh)
     # If there is a git extension remove it
-    removedGitExtension=${remoteUrl/\.git/}
-    wikiRemoteUrl="${removedGitExtension}.wiki.git"
-    git clone $wikiRemoteUrl $outputDirectory
+    REMOVED_GIT_EXTENSION=${REMOTE_URL/\.git/}
+    WIKI_REMOTE_URL="${REMOVED_GIT_EXTENSION}.wiki.git"
+    git clone $WIKI_REMOTE_URL $OUTPUT_DIRECTORY
 fi

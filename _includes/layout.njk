@@ -46,11 +46,11 @@
             {% endif %}
             <div class="footer-inline-links">
 				{%- set wikiPageBaseURL = "https://github.com/" + constants.GITHUB_REPOSITORY + "/wiki/" + page.fileSlug -%}
-				{%- set log = page.inputPath | gitHistory -%}
+				{%- set log = page.inputPath | gitLog -%}
 				<ul class="footer-inline-links">
 					<li>
-						<a href="{{ wikiPageBaseURL }}/_compare/{{ log.latest.hash }}?diff=unified">
-							{{- log.latest.author_name }} edited this page {{ log.latest.date | formatDate -}}
+						<a href="{{ wikiPageBaseURL }}/_compare/{{ log.commit }}?diff=unified">
+							{{- log.author }} edited this page {{ log.date | formatDate -}}
 						</a>
 					</li>
                     <li>
