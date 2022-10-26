@@ -240,7 +240,7 @@ table,
   margin-bottom: 0;
 }
 
-main > img {
+main img {
   display: block;
   margin: 0;
   max-width: 100%;
