@@ -52,7 +52,7 @@ module.exports = function (eleventyConfig) {
     all: {
       constants,
       layout: "page.njk",
-      siteTitle: GITHUB_REPOSITORY_NAME
+      websiteTitle: GITHUB_REPOSITORY_NAME
         ? GITHUB_REPOSITORY_NAME
         : "website-from-github-wiki",
     },
