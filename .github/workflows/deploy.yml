@@ -29,20 +29,20 @@ jobs:
           persist-credentials: true
       - name: Checkout wiki repository
         run: bash ${GITHUB_WORKSPACE}/scripts/get-wiki-files.sh
-      # - name: Setup Node
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: 16
-      # - name: Install dependencies
-      #   run: npm ci
-      # - name: Build project
-      #   run: npm start
-      # - name: Setup Pages
-      #   uses: actions/configure-pages@v2
-      # - name: Upload artifact
-      #   uses: actions/upload-pages-artifact@v1
-      #   with:
-      #     path: "_site"
-      # - name: Deploy to GitHub Pages
-      #   id: deployment
-      #   uses: actions/deploy-pages@v1
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install dependencies
+        run: npm ci
+      - name: Build project
+        run: npm start
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: "_site"
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
