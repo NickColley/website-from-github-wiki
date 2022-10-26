@@ -21,21 +21,28 @@
 		</div>
 	</header>
 	<div class="container">
-		<div class="content">
-			{% block beforeContent %}{% endblock %}
-			<main id="content">
-				{% block content %}{{ content | safe }}{% endblock %}
-			</main>
-			{%- if (content | textLength) > 500 -%}
-				<a class="back-to-top" href="#top">Back to top</a>
-			{%- endif -%}
-		</div>
+        {% block beforeContent %}{% endblock %}
+        {% set hasAside = "_wiki/_Sidebar.md" | fileExists %}
+        <main id="content"{% if hasAside %} class="has-aside"{% endif %}>
+            <h1 class="title">{{ page.fileSlug | deslug | capitalise }}</h1>
+            <div class="content">
+                {% block content %}{{ content | safe }}{% endblock %}
+            </div>
+            {% if hasAside %}
+                <aside>
+                    {% renderFile "_wiki/_Sidebar.md" %}
+                </aside>
+            {% endif %}
+        </main>
+        {%- if (content | textLength) > 500 -%}
+            <a class="back-to-top" href="#top">Back to top</a>
+        {%- endif -%}
 	</div>
 	<footer class="footer">
 		<div class="container">
-            <div class="footer-inline-links">
-                {% renderFileIfExists "_wiki/_Footer.md" %}
-			</div>
+            {% if "_wiki/_Footer.md" | fileExists %}
+                {% renderFile "_wiki/_Footer.md" %}
+            {% endif %}
             <div class="footer-inline-links">
                 {%- set wikiPageBaseURL = "https://github.com/" + constants.GITHUB_REPOSITORY + "/wiki/" + page.fileSlug -%}
                 <ul>

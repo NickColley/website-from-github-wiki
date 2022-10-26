@@ -11,12 +11,11 @@ const {
 const {
   capitalise,
   deslug,
+  fileExists,
   filterBy,
   textLength,
   print,
 } = require("./lib/filters.cjs");
-
-const { renderFileIfExists } = require("./lib/shortcodes.cjs");
 
 const constants = require("./lib/constants.cjs");
 const { BASE_HREF, GITHUB_REPOSITORY_NAME } = constants;
@@ -29,7 +28,10 @@ module.exports = function (eleventyConfig) {
     baseHref: BASE_HREF,
   });
   eleventyConfig.addPlugin(RemarkPlugin, {
-    plugins: ["./lib/markdown/relative-links.js"],
+    plugins: [
+      "./lib/markdown/relative-links.js",
+      "./lib/markdown/aria-current-links.js",
+    ],
   });
 
   eleventyConfig.addPlugin(DefaultFrontmatterPlugin, {
@@ -53,15 +55,10 @@ module.exports = function (eleventyConfig) {
   // Filters
   eleventyConfig.addFilter("capitalise", capitalise);
   eleventyConfig.addFilter("deslug", deslug);
+  eleventyConfig.addFilter("fileExists", fileExists);
   eleventyConfig.addFilter("filterBy", filterBy);
   eleventyConfig.addFilter("textLength", textLength);
   eleventyConfig.addFilter("print", print);
-
-  // Shortcodes
-  eleventyConfig.addAsyncShortcode(
-    "renderFileIfExists",
-    renderFileIfExists(eleventyConfig)
-  );
 
   // Ensure our untracked _wiki input can be used as an input.
   eleventyConfig.setUseGitIgnore(false);

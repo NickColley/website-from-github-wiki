@@ -5,18 +5,17 @@
   --blue: #1d70b8;
   --light-grey: #d8dbde;
   --grey: #b1b4b6;
+  --dark-grey: #505a5f;
   --red: #d4351c;
 
   /* Applied colours */
   --light-color: var(--white);
   --dark-color: var(--black);
   --text-color: var(--dark-color);
+  --border-color: var(--grey);
   --background-color: var(--light-color);
   --link-color: var(--blue);
-  --header-text-color: var(--text-color);
-  --header-background-color: var(--light-grey);
-  --footer-text-color: var(--text-color);
-  --footer-background-color: var(--light-grey);
+  --header-text-color: var(--blue);
 
   --font-family: -apple-system, linkMacSystemFont, "Helvetica Neue",
     "Helvetica", "Arial", sans-serif;
@@ -30,7 +29,7 @@
   --outline-color: var(--text-color);
   --container-padding: 5vw;
   --main-padding-top: 2rem;
-  --main-padding-bottom: 5rem;
+  --main-padding-bottom: 3rem;
 }
 
 ::-moz-selection {
@@ -68,11 +67,6 @@ body {
   padding: 0 var(--container-padding);
 }
 
-.content {
-  background: var(--background-color);
-  max-width: var(--measure);
-}
-
 a {
   color: var(--link-color);
   text-decoration: underline;
@@ -86,8 +80,15 @@ a:hover {
   text-decoration-thickness: var(--line-thickness-big);
 }
 
-a:not(header a):not(main a):not(footer a):not(:hover):not(:focus) {
+a:not(header a):not(main a):not(footer a):not(:focus):not(:active):not(:hover) {
   color: currentColor;
+}
+
+[aria-current=true] {
+  color: currentColor;
+}
+[aria-current=true]:not(:focus):not(:active):not(:hover) {
+  text-decoration: none;
 }
 
 h1,
@@ -116,7 +117,7 @@ h6,
 
 .h1,
 h1 {
-  max-width: 15ch;
+  max-width: 20ch;
   font-size: clamp(2.4rem, 1.4519rem + 4.7407vw, 4rem);
   margin-top: 0.5em;
   margin-bottom: 0.8em;
@@ -147,17 +148,11 @@ li > :where(h2, h3, h4, h5, h6) {
 }
 
 blockquote {
-  border-left: 0.4rem solid var(--grey);
+  border-left: 0.4rem solid var(--border-color);
   margin-left: 0;
   padding-left: 1rem;
 }
 
-p,
-ul,
-ol,
-pre {
-  max-width: var(--measure);
-}
 p,
 ul,
 ol,
@@ -168,16 +163,13 @@ pre {
 main ol,
 main ul {
   padding: 0;
-}
-main li:not(:last-child) {
-  margin-bottom: 0.3rem;
-}
-main > ol,
-main > ul {
   padding-left: 1rem;
 }
-main > ol ol,
-main > ul ul {
+main li:not(:last-of-type) {
+  margin-bottom: 0.3rem;
+}
+main li > ol,
+main li > ul {
   margin-top: 0.3rem;
   margin-bottom: 0.5rem;
   padding-left: 1.5rem;
@@ -223,7 +215,7 @@ th,
 td {
   text-align: left;
   padding: 0.8rem 1rem;
-  border: 2px solid var(--grey);
+  border: 2px solid var(--border-color);
 }
 
 th {
@@ -255,28 +247,69 @@ main > img {
 }
 
 main {
+  max-width: var(--measure);
   padding-top: var(--main-padding-top);
   padding-bottom: var(--main-padding-bottom);
+}
+
+@media (min-width: 40rem) {
+  main.has-aside {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+      "title title"
+      "content aside";
+    column-gap: 3rem;
+    max-width: calc(1.6 * var(--measure));
+  }
+  .title {
+    grid-column: title;
+  }
+  .content {
+    grid-column: content;
+  }
+  aside > :first-child,
+  .content > :first-child {
+    margin-top: 0;
+  }
+  aside {
+    grid-column: aside;
+  }
 }
 main > :first-child {
   margin-top: 0;
 }
-main > :last-child {
-  margin-bottom: 0;
+
+aside ul {
+  margin: 0;
+  padding: 0;
+}
+aside > ul > li {
+  list-style: none;
+}
+aside > ul > li > a {
+  font-weight: bold;
+}
+aside li ul {
+  padding-left: 1.25em;
+}
+aside li ul > li::marker {
+  content: '\2014\2002';
 }
 
 hr {
   margin: 0;
   margin-bottom: 2rem;
   border: 0;
-  border-top: var(--line-thickness-big) solid var(--grey);
+  border-top: var(--line-thickness-big) solid var(--border-color);
 }
 
 .header {
-  color: var(--header-text-color);
-  background: var(--header-background-color);
   padding-top: 1.5rem;
   padding-bottom: 1.125rem;
+  color: var(--header-text-color);
+  background-color: var(--header-background-color);
+  border-bottom: var(--line-thickness) solid var(--border-color);
   --outline-color: currentColor;
 }
 
@@ -342,8 +375,7 @@ hr {
 .back-to-top {
   position: relative;
   display: inline-block;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: var(--main-padding-bottom);
 }
 .back-to-top:focus {
   outline: none;
@@ -377,6 +409,7 @@ hr {
 
 .footer {
   color: var(--footer-text-color);
+  border-top: var(--line-thickness) solid var(--border-color);
   background: var(--footer-background-color);
   padding-top: 2rem;
   padding-bottom: 2rem;
