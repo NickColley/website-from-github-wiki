@@ -276,7 +276,7 @@ hr {
   color: var(--header-text-color);
   background: var(--header-background-color);
   padding-top: 1.5rem;
-  padding-bottom: 1rem;
+  padding-bottom: 1.125rem;
   --outline-color: currentColor;
 }
 
