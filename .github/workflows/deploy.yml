@@ -27,8 +27,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           persist-credentials: true
-      - name: Checkout wiki repository
-        run: bash ${GITHUB_WORKSPACE}/scripts/get-wiki-files.sh
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
