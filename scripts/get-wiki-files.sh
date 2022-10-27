@@ -17,7 +17,6 @@ fi
 # If the output directory does not exist setup a placeholder.
 if ! [ -d $OUTPUT_DIRECTORY ]; then
     echo "No source files, so create a placeholder..."
-    PLACEHOLDER="[Create your first wiki page](https://github.com/$GITHUB_REPOSITORY/wiki)"
     mkdir $OUTPUT_DIRECTORY
-    echo $PLACEHOLDER > "$OUTPUT_DIRECTORY/Home.md"
+    cp "./scripts/_placeholder.md" "$OUTPUT_DIRECTORY/Home.md"
 fi
