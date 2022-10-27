@@ -33,7 +33,7 @@
   --container-padding: 5vw;
   --main-padding-top: 3rem;
   --main-padding-bottom: 3rem;
-  --vertical-spacing: 1.5rem;
+  --vertical-spacing: 1.6rem;
 }
 
 ::-moz-selection {
@@ -101,7 +101,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 1.5em;
+  margin-top: 1.125em;
   margin-bottom: 0.6em;
 }
 h1,
