@@ -31,10 +31,10 @@ module.exports = function (eleventyConfig) {
   });
   eleventyConfig.addPlugin(RemarkPlugin, {
     plugins: [
-      "./lib/markdown/external-links.js",
-      "./lib/markdown/relative-links.js",
-      "./lib/markdown/responsive-tables.js",
-      "./lib/markdown/aria-current-links.js",
+      "./lib/markdown/plugins/external-links.js",
+      "./lib/markdown/plugins/relative-links.js",
+      "./lib/markdown/plugins/responsive-tables.js",
+      "./lib/markdown/plugins/aria-current-links.js",
       "remark-breaks",
       "remark-emoji",
       "remark-footnotes",
