@@ -31,7 +31,9 @@ module.exports = function (eleventyConfig) {
   });
   eleventyConfig.addPlugin(RemarkPlugin, {
     plugins: [
+      "./lib/markdown/external-links.js",
       "./lib/markdown/relative-links.js",
+      "./lib/markdown/responsive-tables.js",
       "./lib/markdown/aria-current-links.js",
       "remark-breaks",
       "remark-emoji",
