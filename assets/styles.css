@@ -175,7 +175,7 @@ pre {
 
 code,
 pre {
-  font-size: 1.2em;
+  font-size: 1em;
   font-family: monospace, monospace;
   background-color: var(--code-background-color);
 }
