@@ -31,9 +31,17 @@
   --outline-offset: 0.25rem;
   --outline-color: currentColor;
   --container-padding: 5vw;
-  --main-padding-top: 3rem;
-  --main-padding-bottom: 3rem;
   --vertical-spacing: 1.6rem;
+  --back-link-margin-top: 2rem;
+  --main-padding-top: 2rem;
+  --main-padding-bottom: 3rem;
+}
+
+@media (min-width: 40rem) {
+  :root {
+    --back-link-margin-top: 2.4rem;
+    --main-padding-top: 2.2rem;
+  }
 }
 
 ::-moz-selection {
@@ -232,7 +240,7 @@ main {
   padding-bottom: var(--main-padding-bottom);
 }
 
-@media (min-width: 40rem) {
+@media (min-width: 60rem) {
   main.has-aside {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -315,6 +323,7 @@ aside li ul > li::marker {
 .header-hr {
   margin: 0;
   margin-top: 0.8rem;
+  border-width: var(--underline-thickness-big);
 }
 
 .header-link {
@@ -340,7 +349,7 @@ aside li ul > li::marker {
 
 .back-link {
   position: relative;
-  margin-top: var(--main-padding-top);
+  margin-top: var(--back-link-margin-top);
   display: inline-block;
 }
 .back-link:focus {
