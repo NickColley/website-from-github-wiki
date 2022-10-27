@@ -21,7 +21,7 @@
                     <span class="visually-hidden">home</span>
                 </span>
 			</a>
-			<hr class="header-hr">
+			<hr class="header-hr" aria-hidden="true">
 		</div>
 	</header>
 	<div class="container">
@@ -43,6 +43,7 @@
         {%- endif -%}
 	</div>
 	<footer class="footer">
+		<hr class="footer-hr" aria-hidden="true">
 		<div class="container">
             {% if "_wiki/_Footer.md" | fileExists %}
                 {% renderFile "_wiki/_Footer.md" %}
@@ -66,7 +67,6 @@
                 </ul>
 			</div>
 			{% if not constants.DEPLOYED %}
-				<hr/>
 				<h2 class="margin-top-0">Development data</h2>
 				<h3>Constants</h3>
 				<pre><code>{{ constants | dump(2) }}</code></pre>

@@ -290,7 +290,7 @@ main li > ul {
   padding-left: 1.5rem;
 }
 
-hr {
+main hr {
   margin: 0;
   margin-bottom: calc(1.5 * var(--vertical-spacing));
   margin-top: calc(1.5 * var(--vertical-spacing));
@@ -323,7 +323,8 @@ aside li ul > li::marker {
 .header-hr {
   margin: 0;
   margin-top: 0.8rem;
-  border-width: var(--underline-thickness-big);
+  border: 0;
+  border-top: var(--underline-thickness-big) solid var(--border-color);
 }
 
 .header-link {
@@ -421,9 +422,7 @@ aside li ul > li::marker {
 
 .footer {
   color: var(--footer-text-color);
-  border-top: var(--line-thickness-big) solid var(--border-color);
   background: var(--footer-background-color);
-  padding-top: 2rem;
   padding-bottom: 2rem;
   box-shadow: 0 100rem 0 100rem var(--footer-background-color);
 }
@@ -432,6 +431,12 @@ aside li ul > li::marker {
 }
 .footer :focus {
   --outline-color: currentColor;
+}
+.footer-hr {
+  margin: 0;
+  margin-bottom: 2rem;
+  border: 0;
+  border-top: var(--underline-thickness-big) solid var(--border-color);
 }
 
 .footer-inline-links:not(:last-child) {
