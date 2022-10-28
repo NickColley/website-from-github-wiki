@@ -5,7 +5,9 @@
   "version": "0.0.0",
   "description": "Website generated from a GitHub wiki",
   "scripts": {
-    "postinstall": "./scripts/get-wiki-files.sh",
+    "wiki": "./scripts/get-wiki-files.sh",
+    "prestart": "npm run wiki",
+    "predev": "npm run wiki",
     "start": "eleventy --config='.eleventy.config.cjs'",
     "dev": "eleventy --config='.eleventy.config.cjs' --serve",
     "test": "npm run lint",
