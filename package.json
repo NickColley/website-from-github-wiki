@@ -14,7 +14,7 @@
     "lint": "eslint lib/**/*.cjs lib/**/*.js .eleventy.config.cjs && prettier --check lib/**/*.cjs lib/**/*.js .eleventy.config.cjs"
   },
   "dependencies": {
-    "@11ty/eleventy": "^2.0.0-canary.16",
+    "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-utils": "^1.0.1",
     "date-fns": "^2.29.3",
     "deepmerge": "^4.2.2",
