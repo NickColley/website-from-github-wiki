@@ -4,6 +4,9 @@
   "name": "website-from-github-wiki",
   "version": "0.0.0",
   "description": "Website generated from a GitHub wiki",
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "wiki": "./scripts/get-wiki-files.sh",
     "prestart": "npm run wiki",
@@ -30,9 +33,6 @@
     "remark-smartypants": "^2.0.0",
     "remark-wiki-link": "^1.0.4",
     "unist-util-visit": "^4.1.1"
-  },
-  "engines": {
-    "node": "16.x"
   },
   "devDependencies": {
     "eslint": "^8.25.0",
