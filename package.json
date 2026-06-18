@@ -32,7 +32,7 @@
     "remark-slug": "^7.0.1",
     "remark-smartypants": "^2.0.0",
     "remark-wiki-link": "^2.0.1",
-    "unist-util-visit": "^4.1.1"
+    "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
     "eslint": "^8.25.0",
